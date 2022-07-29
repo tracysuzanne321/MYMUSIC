@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-export const Signupfor = () => {
+export const LogInForm = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [valid, setValid] = useState(true);
@@ -41,6 +42,12 @@ export const Signupfor = () => {
 				className="bg-pink-500 hover:bg-black p-1.5 rounded text-white">
 				Log in
 			</button>
+			<h3 className="text-center mt-10 mb-2">New to MyMusic?</h3>
+			<Link
+				to="/signup"
+				className="border border-pink-500 hover:bg-pink-500 hover:text-white p-1.5 rounded text-pink-500 text-center">
+				Sign Up
+			</Link>
 		</form>
 	);
 };

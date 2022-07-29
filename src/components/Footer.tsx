@@ -1,5 +1,9 @@
 const Footer = () => {
-	return <div>Footer</div>;
+	return (
+		<footer className="fixed bg-black bottom-0 flex flex-col items-center py-6 text-white w-full">
+			Copyright &copy; MyMusic 2021
+		</footer>
+	);
 };
 
 export default Footer;

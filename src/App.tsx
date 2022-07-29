@@ -3,10 +3,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Settings from './pages/Settings';
-import Playlist from './pages/Signin';
+import Playlist from './pages/Playlist';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
-import Search from './pages/Search';
+import Footer from './components/Footer';
 
 const App = () => {
 	return (
@@ -19,8 +19,8 @@ const App = () => {
 					<Route path="/playlist" element={<Playlist />} />
 					<Route path="/signin" element={<Signin />} />
 					<Route path="/signup" element={<Signup />} />
-					<Route path="/search" element={<Search />} />
 				</Routes>
+				<Footer />
 			</BrowserRouter>
 		</div>
 	);
