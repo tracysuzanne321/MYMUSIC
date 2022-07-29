@@ -1,38 +1,36 @@
-.App {
-  text-align: center;
+audio::-webkit-media-controls-panel {
+	background-color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+audio::-webkit-media-controls-mute-button {
+	background-color: #ec489a;
+	border-radius: 50%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+audio::-webkit-media-controls-play-button {
+	background-color: #ec489a;
+	border-radius: 50%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+audio::-webkit-media-controls-play-button:hover {
+	background-color: rgba(249, 168, 212, 0.7);
 }
 
-.App-link {
-  color: #61dafb;
+audio::-webkit-media-controls-current-time-display {
+	color: #ec489a;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+audio::-webkit-media-controls-time-remaining-display {
+	color: #ec489a;
+}
+
+audio::-webkit-media-controls-volume-slider {
+	background-color: #ec489a;
+	border-radius: 25px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.audio-player {
+	width: 100%;
+	left: 0;
 }

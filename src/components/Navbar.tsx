@@ -7,11 +7,14 @@ const Navbar = () => {
 			<div className="flex items-center space-x-5">
 				<Link className="flex items-center" to="/">
 					<img alt="logo" className="h-6 " src={logo} />
-					<div className=" text-xl">MyMusic</div>
+					<div className=" text-xl ml-2">MyMusic</div>
+				</Link>
+				<Link to="/search">
+					<h3 className="cursor-pointer">Search</h3>
 				</Link>
 				<Link to="/playlist">
 					<h3 className="text-white bg-pink-500 px-4 py-1 rounded-full cursor-pointer hover:bg-white hover:border-pink-500 hover:border hover:text-pink-500 hover:transition-all">
-						Playlist
+						My Music
 					</h3>
 				</Link>
 			</div>

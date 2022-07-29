@@ -6,6 +6,7 @@ import Settings from './pages/Settings';
 import Playlist from './pages/Signin';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
+import Search from './pages/Search';
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 					<Route path="/playlist" element={<Playlist />} />
 					<Route path="/signin" element={<Signin />} />
 					<Route path="/signup" element={<Signup />} />
+					<Route path="/search" element={<Search />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
