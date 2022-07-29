@@ -19,7 +19,7 @@ const Tiles = () => {
 		fetchData();
 	});
 	return (
-		<div className="flex flex-wrap max-w-5xl mx-auto justify-center my-10">
+		<div className="flex flex-wrap max-w-5xl mx-auto justify-center mt-10 mb-40">
 			{tracks.map((track) => (
 				<div
 					className="flex flex-col p-2 w-64 xs:w-1/2 space-y-1  "
