@@ -39,7 +39,7 @@ export const Signupfor = () => {
 			<button
 				type="submit"
 				className="bg-pink-500 hover:bg-black p-1.5 rounded text-white">
-				Log in
+				Sign up
 			</button>
 		</form>
 	);
