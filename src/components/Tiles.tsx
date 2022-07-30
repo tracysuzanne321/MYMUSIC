@@ -1,12 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getTopTracks } from '../utils';
-
-interface Track {
-	name: string;
-	artistName: string;
-	image: string;
-	preview: string;
-}
+import { Track } from '../typings';
 
 const Tiles = () => {
 	const [tracks, setTracks] = useState<Track[]>([]);
