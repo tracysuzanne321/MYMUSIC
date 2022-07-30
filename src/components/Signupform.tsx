@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export const Signupfor = () => {
 	const [email, setEmail] = useState('');
+	const [usename, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [valid, setValid] = useState(true);
 
@@ -25,6 +26,14 @@ export const Signupfor = () => {
 				onChange={(e) => setEmail(e.target.value)}
 			/>
 			<input
+				id="username"
+				autoComplete="on"
+				className="border border-solid mb-2 px-1 py-1.5 rounded"
+				placeholder="Username"
+				type="text"
+				onChange={(e) => setUsername(e.target.value)}
+			/>
+			<input
 				id="password"
 				className="border border-solid mb-2 px-1 py-1.5 rounded"
 				placeholder="Password"
@@ -38,7 +47,7 @@ export const Signupfor = () => {
 			)}
 			<button
 				type="submit"
-				className="bg-pink-500 hover:bg-black p-1.5 rounded text-white">
+				className="bg-pink-500 border border-pink-500 hover:bg-black hover:border hover:border-white p-1.5 rounded text-white">
 				Sign up
 			</button>
 		</form>

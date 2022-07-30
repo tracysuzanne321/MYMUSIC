@@ -8,7 +8,7 @@ export const LogInForm = () => {
 
 	return (
 		<form
-			className="flex flex-col  "
+			className="flex flex-col   "
 			onSubmit={async (e) => {
 				e.preventDefault();
 				try {
@@ -37,15 +37,16 @@ export const LogInForm = () => {
 					Invalid email or password!
 				</div>
 			)}
-			<button
+			<Link
+				to="/"
 				type="submit"
-				className="bg-pink-500 hover:bg-black p-1.5 rounded text-white">
+				className="bg-pink-500 border-pink-500 border hover:bg-black hover:border hover:border-white hover:text-white p-1.5 rounded text-white text-center">
 				Log in
-			</button>
-			<h3 className="text-center mt-10 mb-2">New to MyMusic?</h3>
+			</Link>
+			<h3 className="text-center mt-10 mb-2 text-white">New to MyMusic?</h3>
 			<Link
 				to="/signup"
-				className="border border-pink-500 hover:bg-pink-500 hover:text-white p-1.5 rounded text-pink-500 text-center">
+				className="border border-white hover:bg-pink-500 hover:text-white p-1.5 hover:border hover:border-pink-500 rounded text-white text-center">
 				Sign Up
 			</Link>
 		</form>

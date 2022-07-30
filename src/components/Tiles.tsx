@@ -20,10 +20,10 @@ const Tiles = () => {
 		}
 	}, []);
 	return (
-		<div className="flex flex-wrap max-w-5xl mx-auto justify-center mt-4 mb-40">
+		<div className="flex flex-wrap max-w-5xl mx-auto justify-center mt-4 pb-28">
 			{error && <p>{error}</p>}
 			{tracks.length === 0 ? (
-				<div>...Loading</div>
+				<div className="text-white">...Loading</div>
 			) : (
 				tracks.map((track) => (
 					<div
@@ -44,9 +44,9 @@ const Tiles = () => {
 							<source src={track.preview} type="audio/mpeg" />
 							Your browser does not support the audio element.
 						</audio>
-						<div className="text-sm truncate">{track.name}</div>
-						<div className="text-xs">{track.artistName}</div>
-						<div className="w-full bg-pink-500 text-center text-white p-1.5 rounded hover:bg-black cursor-pointer">
+						<div className="text-sm truncate text-white">{track.name}</div>
+						<div className="text-xs text-white">{track.artistName}</div>
+						<div className="w-full bg-pink-500 border border-pink-500 text-center text-white p-1.5 rounded hover:bg-black hover:border hover:border-white cursor-pointer">
 							Save Track
 						</div>
 					</div>
