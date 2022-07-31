@@ -7,21 +7,40 @@ import Playlist from './pages/Playlist';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import Footer from './components/Footer';
+import { useState, useEffect } from 'react';
+import { AppContext } from './App.Context';
+import { attemptTokenLogin } from './utils';
 
 const App = () => {
+	const [user, setUser] = useState({ email: '', password: '' });
+
+	useEffect(() => {
+		async function fetchData() {
+			if (user.email === '') {
+				const signedInUser = await attemptTokenLogin();
+				if (signedInUser !== null) {
+					setUser(signedInUser);
+				}
+			}
+		}
+		fetchData();
+	}, [user, setUser]);
+
 	return (
 		<div className="App">
-			<BrowserRouter>
-				<Navbar />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/settings" element={<Settings />} />
-					<Route path="/playlist" element={<Playlist />} />
-					<Route path="/signin" element={<Signin />} />
-					<Route path="/signup" element={<Signup />} />
-				</Routes>
-				<Footer />
-			</BrowserRouter>
+			<AppContext.Provider value={{ user, setUser }}>
+				<BrowserRouter>
+					<Navbar />
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/settings" element={<Settings />} />
+						<Route path="/playlist" element={<Playlist />} />
+						<Route path="/signin" element={<Signin />} />
+						<Route path="/signup" element={<Signup />} />
+					</Routes>
+					<Footer />
+				</BrowserRouter>
+			</AppContext.Provider>
 		</div>
 	);
 };

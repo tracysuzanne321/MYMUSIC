@@ -25,14 +25,7 @@ export const Signupfor = () => {
 				type="text"
 				onChange={(e) => setEmail(e.target.value)}
 			/>
-			<input
-				id="username"
-				autoComplete="on"
-				className="border border-solid mb-2 px-1 py-1.5 rounded"
-				placeholder="Username"
-				type="text"
-				onChange={(e) => setUsername(e.target.value)}
-			/>
+
 			<input
 				id="password"
 				className="border border-solid mb-2 px-1 py-1.5 rounded"

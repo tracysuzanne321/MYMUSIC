@@ -7,23 +7,30 @@ const Tiles = () => {
 	const [error, setError] = useState('');
 
 	useEffect(() => {
-		try {
-			const fetchData = async () => {
-				const topTracks = await getTopTracks();
-				setTracks(topTracks);
-			};
+		setTimeout(() => {
+			try {
+				const fetchData = async () => {
+					const topTracks = await getTopTracks();
+					setTracks(topTracks);
+				};
 
-			fetchData();
-		} catch (error) {
-			console.log(error);
-			setError('Could not fetch Data');
-		}
+				fetchData();
+			} catch (error) {
+				console.log(error);
+				setError('Could not fetch Data');
+			}
+		}, 2000);
 	}, []);
 	return (
 		<div className="flex flex-wrap max-w-5xl mx-auto justify-center mt-4 pb-28">
 			{error && <p>{error}</p>}
 			{tracks.length === 0 ? (
-				<div className="text-white">...Loading</div>
+				<div className="lds-ellipsis">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
 			) : (
 				tracks.map((track) => (
 					<div
@@ -41,12 +48,12 @@ const Tiles = () => {
 							preload="auto"
 							loop
 							controlsList="nodownload noplaybackrate">
-							<source src={track.preview} type="audio/mpeg" />
+							<source src={track.previewURL} type="audio/mpeg" />
 							Your browser does not support the audio element.
 						</audio>
 						<div className="text-sm truncate text-white">{track.name}</div>
 						<div className="text-xs text-white">{track.artistName}</div>
-						<div className="w-full bg-pink-500 border border-pink-500 text-center text-white p-1.5 rounded hover:bg-black hover:border hover:border-white cursor-pointer">
+						<div className="w-full bg-black border border-white text-center text-white p-1.5 rounded hover:bg-pink-500 hover:border hover:border-pink-500 cursor-pointer">
 							Save Track
 						</div>
 					</div>
