@@ -10,15 +10,17 @@ import Footer from './components/Footer';
 import { useState, useEffect } from 'react';
 import { AppContext } from './App.Context';
 import { attemptTokenLogin } from './utils';
+import { User } from './typings';
 
 const App = () => {
-	const [user, setUser] = useState({ email: '', password: '' });
+	const [user, setUser] = useState<User>();
 
+	console.log(user);
 	useEffect(() => {
 		async function fetchData() {
-			if (user.email === '') {
+			if (!user) {
 				const signedInUser = await attemptTokenLogin();
-				if (signedInUser !== null) {
+				if (signedInUser) {
 					setUser(signedInUser);
 				}
 			}

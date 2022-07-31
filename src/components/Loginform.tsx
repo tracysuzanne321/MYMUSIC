@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../utils';
+import { AppContext } from '../App.Context';
 
 export const LogInForm = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
 	const [valid, setValid] = useState(true);
+	const navigate = useNavigate();
+	const [email, setEmail] = useState<string>();
+	const [password, setPassword] = useState<string>();
+	const { setUser } = useContext(AppContext);
 
 	return (
 		<form
@@ -12,6 +17,12 @@ export const LogInForm = () => {
 			onSubmit={async (e) => {
 				e.preventDefault();
 				try {
+					if (email && password) {
+						const userData = await login(email, password);
+						setUser(userData);
+						navigate('/');
+					}
+					throw new Error('Missing email and password.');
 				} catch (e) {
 					setValid(false);
 				}
@@ -37,12 +48,11 @@ export const LogInForm = () => {
 					Invalid email or password!
 				</div>
 			)}
-			<Link
-				to="/"
+			<button
 				type="submit"
 				className="bg-pink-500 border-pink-500 border hover:bg-black hover:border hover:border-white hover:text-white p-1.5 rounded text-white text-center">
 				Log in
-			</Link>
+			</button>
 			<h3 className="text-center mt-10 mb-2 text-white">New to MyMusic?</h3>
 			<Link
 				to="/signup"

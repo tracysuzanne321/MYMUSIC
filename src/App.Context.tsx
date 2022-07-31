@@ -5,6 +5,6 @@ export const AppContext = createContext<userContextType>({
 	setUser: () => {},
 	user: {
 		email: '',
-		password: '',
+		id: '',
 	},
 });

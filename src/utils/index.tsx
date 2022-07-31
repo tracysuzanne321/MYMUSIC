@@ -36,13 +36,36 @@ export const createUser = async (email: User, password: User) => {
 			}),
 		});
 		const data = await response.json();
-		document.cookie = `authToken=${data.token};max-age-604800;domain=${reactAppDomain}`;
+		document.cookie = `authToken=${data.token};max-age-604800;path=/`;
 		return {
 			email: data.result.email,
 			id: data.result._id,
 		};
 	} catch (error) {
 		console.log(error);
+	}
+};
+
+export const login = async (email: string, password: string) => {
+	try {
+		const response = await fetch(`${apiUrl}/login`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: email,
+				password: password,
+			}),
+		});
+		const data = await response.json();
+		document.cookie = `authToken=${data.token};max-age-604800;path=/`;
+		return {
+			email: data.user.email,
+			id: data.user._id,
+		};
+	} catch (error) {
+		throw error;
 	}
 };
 
@@ -61,7 +84,6 @@ export const attemptTokenLogin = async () => {
 			document.cookie = `authToken=${data.token};max-age=604800;domain=${reactAppDomain}`;
 			return {
 				email: data.user.email,
-				password: data.user.password,
 				id: data.user._id,
 			};
 		}
