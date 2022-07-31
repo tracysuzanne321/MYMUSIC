@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AppContext } from '../App.Context';
+import { createUser } from '../utils';
+import { useNavigate } from 'react-router-dom';
 
 export const Signupfor = () => {
-	const [email, setEmail] = useState('');
-	const [usename, setUsername] = useState('');
-	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState<string>();
+	const [password, setPassword] = useState<string>();
+	const [username, setUsername] = useState<string>();
 	const [valid, setValid] = useState(true);
+	const navigate = useNavigate();
+	const { setUser } = useContext(AppContext);
 
 	return (
 		<form
@@ -12,6 +17,12 @@ export const Signupfor = () => {
 			onSubmit={async (e) => {
 				e.preventDefault();
 				try {
+					if (email && password && username) {
+						const userData = await createUser(username, email, password);
+						setUser(userData!);
+						navigate('/');
+					}
+					throw new Error('Missing email and password.');
 				} catch (e) {
 					setValid(false);
 				}
@@ -24,6 +35,16 @@ export const Signupfor = () => {
 				placeholder="Email"
 				type="text"
 				onChange={(e) => setEmail(e.target.value)}
+			/>
+
+			<input
+				id="username"
+				autoFocus={true}
+				autoComplete="on"
+				className="border border-solid mb-2 px-1 py-1.5 rounded"
+				placeholder="Username"
+				type="text"
+				onChange={(e) => setUsername(e.target.value)}
 			/>
 
 			<input

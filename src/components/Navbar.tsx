@@ -6,9 +6,12 @@ import { AppContext } from '../App.Context';
 import { useContext } from 'react';
 import { userContextType } from '../typings';
 import profile from '../images/profile.svg';
+import { logOut } from '../utils';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
-	const { user } = useContext<userContextType>(AppContext);
+	const { user, setUser } = useContext<userContextType>(AppContext);
+	const navigate = useNavigate();
 	return (
 		<nav className="flex justify-between py-5 max-w-5xl mx-auto">
 			<div className="flex items-center space-x-10">
@@ -45,8 +48,23 @@ const Navbar = () => {
 						alt="profile placeholder"
 					/>
 					<div className="dropdown-content ">
+						<p className="text-white pt-2">Signed in as</p>
+						<div className="text-pink-500  pb-2">{user?.username}</div>
 						<Link to="/settings">Profile</Link>
-						<Link to="/">Log Out</Link>
+						<Link
+							to="/"
+							onClick={async () => {
+								await logOut();
+								setUser({
+									username: '',
+									email: '',
+									id: '',
+								});
+
+								navigate('/');
+							}}>
+							Log Out
+						</Link>
 					</div>
 				</div>
 			)}

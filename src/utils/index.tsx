@@ -1,4 +1,4 @@
-import { Track, User } from '../typings';
+import { Track } from '../typings';
 
 const apiUrl = process.env.REACT_APP_API_BASE_URL;
 const reactAppDomain = process.env.REACT_APP_DOMAIN;
@@ -25,12 +25,17 @@ export const getTopTracks = async () => {
 	}
 };
 
-export const createUser = async (email: User, password: User) => {
+export const createUser = async (
+	username: string,
+	email: string,
+	password: string,
+) => {
 	try {
 		const response = await fetch(`${apiUrl}/user`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
+				username: username,
 				email: email,
 				password: password,
 			}),
@@ -38,6 +43,7 @@ export const createUser = async (email: User, password: User) => {
 		const data = await response.json();
 		document.cookie = `authToken=${data.token};max-age-604800;path=/`;
 		return {
+			username: data.result.username,
 			email: data.result.email,
 			id: data.result._id,
 		};
@@ -61,8 +67,59 @@ export const login = async (email: string, password: string) => {
 		const data = await response.json();
 		document.cookie = `authToken=${data.token};max-age-604800;path=/`;
 		return {
+			username: data.user.username,
 			email: data.user.email,
 			id: data.user._id,
+		};
+	} catch (error) {
+		throw error;
+	}
+};
+
+export const logOut = async () => {
+	document.cookie = `authToken=loggedOut;max-age=0;path=/`;
+};
+
+export const updateUser = async (
+	username: string,
+	email: string,
+	password: string,
+) => {
+	try {
+		const response = await fetch(`${apiUrl}/update`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${getCookie('authToken')}`,
+			},
+			body: JSON.stringify({
+				username: username,
+				email: email,
+				password: password,
+			}),
+		});
+		const data = await response.json();
+		return {
+			username: data.result.username,
+			email: data.result.email,
+			id: data.result._id,
+		};
+	} catch (error) {
+		throw error;
+	}
+};
+
+export const deleteUser = async () => {
+	try {
+		await fetch(`${apiUrl}/delete`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${getCookie('authToken')}`,
+			},
+		});
+		return {
+			message: 'success',
 		};
 	} catch (error) {
 		throw error;
@@ -83,6 +140,7 @@ export const attemptTokenLogin = async () => {
 			const data = await response.json();
 			document.cookie = `authToken=${data.token};max-age=604800;domain=${reactAppDomain}`;
 			return {
+				username: data.user.username,
 				email: data.user.email,
 				id: data.user._id,
 			};

@@ -7,8 +7,9 @@ export interface Track {
 }
 
 export interface User {
-	email: string;
-	id: string;
+	username?: string;
+	email?: string;
+	id?: string;
 }
 
 export type userContextType = {
