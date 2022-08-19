@@ -19,7 +19,7 @@ const Tiles = () => {
 				console.log(error);
 				setError('Could not fetch Data');
 			}
-		}, 2000);
+		}, 1000);
 	}, []);
 	return (
 		<div className="flex flex-wrap max-w-5xl mx-auto justify-center mt-4 pb-28">
@@ -43,6 +43,7 @@ const Tiles = () => {
 						/>
 
 						<audio
+							title="sounds"
 							className="audio-player"
 							controls
 							preload="auto"

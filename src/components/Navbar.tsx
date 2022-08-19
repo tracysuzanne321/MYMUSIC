@@ -41,14 +41,14 @@ const Navbar = () => {
 					</Link>
 				</div>
 			) : (
-				<div className="dropdown flex flex-col items-center space-x-5 ">
+				<div className="dropdown  ">
 					<img
 						className="w-10 h-10 cursor-pointer "
 						src={profile}
 						alt="profile placeholder"
 					/>
-					<div className="dropdown-content ">
-						<p className="text-white pt-2">Signed in as</p>
+					<div className="dropdown-content border border-white px-2 py-2 ">
+						<p className="text-white pt-2 ">Signed in as</p>
 						<div className="text-pink-500  pb-2">{user?.username}</div>
 						<Link to="/settings">Profile</Link>
 						<Link

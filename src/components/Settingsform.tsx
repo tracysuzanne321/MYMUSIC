@@ -36,7 +36,6 @@ const Settingsform = () => {
 				/>
 				<input
 					id="username"
-					autoFocus={true}
 					autoComplete="on"
 					className="border border-solid mb-2 px-1 py-1.5 rounded"
 					placeholder="Username"
