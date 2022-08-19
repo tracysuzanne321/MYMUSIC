@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://mymusic-uk.netlify.app/">
+  <a href="https://mymusic2022.netlify.app/">
     <img src="/src/images/screenshot.png" alt="Logo" >
   </a>
 
@@ -12,14 +12,14 @@
   <p align="center">
     An awesome README template to jumpstart your projects!
     <br />
-    <a href="https://github.com/tracysuzanne321/My-Music"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/tracysuzanne321/MYMUSIC/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://mymusic-uk.netlify.app/">View Demo</a>
+    <a href="https://mymusic2022.netlify.app/">View Demo</a>
     ·
-    <a href="https://github.com/tracysuzanne321/My-Music/issues">Report Bug</a>
+    <a href="https://github.com/tracysuzanne321/MYMUSIC/issues">Report Bug</a>
     ·
-    <a href="https://github.com/tracysuzanne321/My-Music/issues">Request Feature</a>
+    <a href="https://github.com/tracysuzanne321/MYMUSIC/issues">Request Feature</a>
   </p>
 </div>
 
@@ -116,7 +116,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/tracysuzanne321/My-Music
+   git clone https://github.com/tracysuzanne321/MYMUSIC
    ```
 2. Install NPM packages
    ```sh
@@ -166,7 +166,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Email me at - tracysmith32@live.co.uk
 
-Project Link: [https://github.com/tracysuzanne321/My-Music](https://github.com/tracysuzanne321/My-Music)
+Project Link: [https://github.com/tracysuzanne321/MYMUSIC](https://github.com/tracysuzanne321/MYMUSIC)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
