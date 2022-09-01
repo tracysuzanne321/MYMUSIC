@@ -10,10 +10,11 @@ import Footer from './components/Footer';
 import { useState, useEffect } from 'react';
 import { AppContext } from './App.Context';
 import { attemptTokenLogin } from './utils';
-import { User } from './typings';
+import { User, Track } from './typings';
 
 const App = () => {
 	const [user, setUser] = useState<User>();
+	const [savedTracks, setSavedTracks] = useState<Track>();
 
 	console.log(user);
 	useEffect(() => {
@@ -30,7 +31,8 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<AppContext.Provider value={{ user, setUser }}>
+			<AppContext.Provider
+				value={{ user, setUser, savedTracks, setSavedTracks }}>
 				<BrowserRouter>
 					<Navbar />
 					<Routes>

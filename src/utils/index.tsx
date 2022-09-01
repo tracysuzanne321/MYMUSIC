@@ -6,7 +6,7 @@ const reactAppDomain = process.env.REACT_APP_DOMAIN;
 export const getTopTracks = async () => {
 	try {
 		const response = await fetch(
-			'https://api.napster.com/v2.2/tracks/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4',
+			'https://api.napster.com/v2.1/tracks/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4',
 		);
 		if (!response.ok) {
 			throw new Error(response.statusText);
@@ -16,12 +16,63 @@ export const getTopTracks = async () => {
 			return {
 				name: track.name,
 				artistName: track.artistName,
-				image: `https://api.napster.com/imageserver/v2/artists/${track.artistId}/images/500x500.jpg`,
+				image: `https://api.napster.com/imageserver/v2/albums/${track.albumId}/images/500x500.jpg`,
 				previewURL: track.previewURL,
 			};
 		});
 	} catch (err: any) {
 		console.log(err.message);
+	}
+};
+
+export const addtrack = async (trackDetails: string) => {
+	try {
+		await fetch(`${apiUrl}/music`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${getCookie('authToken')}`,
+			},
+			body: JSON.stringify(trackDetails),
+		});
+	} catch (err) {
+		throw err;
+	}
+};
+
+export const getSavedTracks = async () => {
+	try {
+		const response = await fetch(`${apiUrl}/music`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${getCookie('authToken')}`,
+			},
+		});
+		const data = await response.json();
+		return data.map((track: Track) => {
+			return {
+				...track,
+				id: `${track.name}_${track.artistName}`,
+			};
+		});
+	} catch (err) {
+		throw err;
+	}
+};
+
+export const deleteTrack = async (trackDetails: Track) => {
+	try {
+		await fetch(`${apiUrl}/delete_track`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${getCookie('authToken')}`,
+			},
+			body: JSON.stringify(trackDetails),
+		});
+	} catch (error) {
+		throw error;
 	}
 };
 

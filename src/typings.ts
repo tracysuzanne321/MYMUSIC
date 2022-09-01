@@ -4,6 +4,7 @@ export interface Track {
 	image: string;
 	previewURL: string;
 	artistId: string;
+	albumId: string;
 }
 
 export interface User {
@@ -15,4 +16,6 @@ export interface User {
 export type userContextType = {
 	user?: User;
 	setUser: (user: User) => void;
+	savedTracks?: Track;
+	setSavedTracks: (tracks: Track) => void;
 };

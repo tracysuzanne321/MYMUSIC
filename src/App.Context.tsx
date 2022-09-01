@@ -7,4 +7,6 @@ export const AppContext = createContext<userContextType>({
 		email: '',
 		id: '',
 	},
+	setSavedTracks: () => {},
+	savedTracks: undefined,
 });

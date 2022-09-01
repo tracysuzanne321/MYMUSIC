@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react';
 import { getTopTracks } from '../utils';
 import { Track } from '../typings';
 
+let audio: HTMLAudioElement | null = null;
+
 const Tiles = () => {
 	const [tracks, setTracks] = useState<Track[]>([]);
 	const [error, setError] = useState('');
+	const [playing, setPlaying] = useState(false);
+	const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -42,20 +46,42 @@ const Tiles = () => {
 							src={track.image}
 						/>
 
-						<audio
-							title="sounds"
-							className="audio-player"
-							controls
-							preload="auto"
-							loop
-							controlsList="nodownload noplaybackrate">
-							<source src={track.previewURL} type="audio/mpeg" />
-							Your browser does not support the audio element.
-						</audio>
-						<div className="text-sm truncate text-white">{track.name}</div>
-						<div className="text-xs text-white">{track.artistName}</div>
-						<div className="w-full bg-black border border-white text-center text-white p-1.5 rounded hover:bg-pink-500 hover:border hover:border-pink-500 cursor-pointer">
-							Save Track
+						<div className="flex flex-col justify-between h-1/3">
+							<div className="flex flex-col justify-between">
+								<p className="text-sm text-white font-bold truncate">
+									{track.name}
+								</p>
+								<p className="text-sm text-white">{track.artistName}</p>
+							</div>
+							<div className="flex justify-between">
+								<button
+									className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded"
+									onClick={() => {
+										if (currentTrack && currentTrack.name === track.name) {
+											if (audio) {
+												if (playing) {
+													audio.pause();
+													setPlaying(false);
+												} else {
+													audio.play();
+													setPlaying(true);
+												}
+											}
+										} else {
+											if (audio) {
+												audio.pause();
+											}
+											audio = new Audio(track.previewURL);
+											audio.play();
+											setPlaying(true);
+											setCurrentTrack(track);
+										}
+									}}>
+									{playing && currentTrack && currentTrack.name === track.name
+										? 'Pause'
+										: 'Play Track'}
+								</button>
+							</div>
 						</div>
 					</div>
 				))
