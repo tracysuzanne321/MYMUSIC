@@ -138,7 +138,7 @@ export const updateUser = async (
 ) => {
 	try {
 		const response = await fetch(`${apiUrl}/update`, {
-			method: 'PUT',
+			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${getCookie('authToken')}`,

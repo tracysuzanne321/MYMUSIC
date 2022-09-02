@@ -7,13 +7,17 @@ const Settings = () => {
 
 	return (
 		<div className="flex justify-center ">
-			<div className="w-full max-w-md mt-16 mx-2 sm:mx-0 border border-gray-300 p-8 rounded">
-				<div className="mb-4">
+			<div className="w-full max-w-md my-5 mx-2 sm:mx-0 border border-gray-300 p-8 rounded">
+				<div className="">
 					<h1 className="text-3xl mb-4 text-white">Current Login Details:</h1>
-					<div className="text-white">email: {user!.email}</div>
-					<div className="text-white">username: {user!.username}</div>
+					<div className="text-white">
+						email: <span className="text-pink-500">{user?.email}</span>{' '}
+					</div>
+					<div className="text-white">
+						username: <span className="text-pink-500">{user?.username}</span>{' '}
+					</div>
 				</div>
-				<h1 className="text-3xl mb-4">User Account</h1>
+				<h1 className="text-lg my-4  text-white">Update Account Details</h1>
 				<Settingsform />
 			</div>
 		</div>

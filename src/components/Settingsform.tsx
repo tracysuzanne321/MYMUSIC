@@ -22,6 +22,7 @@ const Settingsform = () => {
 						setUser(userData);
 						navigate('/');
 					} catch (e) {
+						console.log(e);
 						setValid(false);
 					}
 				}}>
@@ -31,7 +32,7 @@ const Settingsform = () => {
 					autoComplete="on"
 					className="border border-solid mb-2 px-1 py-1.5 rounded"
 					placeholder="Email"
-					type="text"
+					type="email"
 					onChange={(e) => setEmail(e.target.value)}
 				/>
 				<input
@@ -56,7 +57,7 @@ const Settingsform = () => {
 				)}
 				<button
 					type="submit"
-					className="bg-pink-500 hover:bg-black p-1.5 rounded text-white mt-4">
+					className="bg-pink-500 hover:bg-pink-700 p-1.5 rounded text-white mt-4">
 					Update User Settings
 				</button>
 			</form>
@@ -72,7 +73,7 @@ const Settingsform = () => {
 						navigate('/');
 					}
 				}}
-				className="bg-pink-500 hover:bg-black p-1.5 rounded text-white mt-4 w-full">
+				className="bg-pink-500 hover:bg-pink-700 p-1.5 rounded text-white mt-4 w-full">
 				Delete User
 			</button>
 		</>

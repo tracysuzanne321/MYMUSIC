@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
 	const { user, setUser } = useContext<userContextType>(AppContext);
 	const navigate = useNavigate();
+	console.log(user);
 	return (
 		<nav className="flex justify-between py-5 max-w-5xl mx-auto">
 			<div className="flex items-center space-x-10">

@@ -29,6 +29,8 @@ const App = () => {
 		fetchData();
 	}, [user, setUser]);
 
+	console.log(user);
+
 	return (
 		<div className="App">
 			<AppContext.Provider
