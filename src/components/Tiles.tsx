@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getTopTracks } from '../utils';
 import { Track } from '../typings';
+import { AiFillPlayCircle, AiFillPauseCircle } from 'react-icons/ai';
+import { motion } from 'framer-motion';
 
 let audio: HTMLAudioElement | null = null;
 
@@ -37,8 +39,8 @@ const Tiles = () => {
 				</div>
 			) : (
 				tracks.map((track) => (
-					<div
-						className="flex flex-col p-2 w-64 xs:w-1/2 space-y-1  "
+					<motion.div
+						className="flex flex-col p-2 w-1/5 xs:w-1/2 space-y-1  "
 						key={`${track.name}_${track.artistName}`}>
 						<img
 							className="rounded h-2/3 object-cover"
@@ -53,9 +55,11 @@ const Tiles = () => {
 								</p>
 								<p className="text-sm text-white">{track.artistName}</p>
 							</div>
-							<div className="flex justify-between">
-								<button
-									className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded"
+							<div>
+								<motion.button
+									whileHover={{ scale: 1.5 }}
+									whileTap={{ scale: 0.9 }}
+									className="bg-transparent text-white font-bold py-2  cursor-pointer"
 									onClick={() => {
 										if (currentTrack && currentTrack.name === track.name) {
 											if (audio) {
@@ -77,13 +81,17 @@ const Tiles = () => {
 											setCurrentTrack(track);
 										}
 									}}>
-									{playing && currentTrack && currentTrack.name === track.name
-										? 'Pause'
-										: 'Play Track'}
-								</button>
+									{playing &&
+									currentTrack &&
+									currentTrack.name === track.name ? (
+										<AiFillPauseCircle className="w-8 h-8 text-pink-500 hover:text-pink-700 " />
+									) : (
+										<AiFillPlayCircle className="w-8 h-8 text-pink-500 hover:text-pink-700 " />
+									)}
+								</motion.button>
 							</div>
 						</div>
-					</div>
+					</motion.div>
 				))
 			)}
 		</div>
